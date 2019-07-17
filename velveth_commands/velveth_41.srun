@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH --partition=bgmp        ### Partition (like a queue in PBS)
+#SBATCH --job-name=2_WE_velveth   ### Job Name
+#SBATCH --output=slurm-%j-%x.out ### File in which to store job output
+#SBATCH --error=41_vel.err       ### File in which to store job error messages
+#SBATCH --time=0-00:60:00       ### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1               ### Number of nodes needed for the job
+#SBATCH --ntasks-per-node=1     ### Number of tasks to be launched per Node
+#SBATCH --account=bgmp          ### Account used for job submission
+
+
+#File directories
+file1="/projects/bgmp/shared/Bi621/800_3_PE5_interleaved.fq_1"
+file2="/projects/bgmp/shared/Bi621/800_3_PE5_interleaved.fq_2"
+file3="/projects/bgmp/shared/Bi621/800_3_PE5_interleaved.fq.unmatched"
+
+#Running velveth
+/usr/bin/time -v velveth /projects/bgmp/wyatte/ps6_dir/vel2_41_out/ 41 -fastq -shortPaired $file1 $file2 -short $file3

@@ -1,0 +1,43 @@
+# Contig length		Number of contigs in this category
+0	5715
+100	3997
+200	648
+300	437
+400	297
+500	207
+600	154
+700	117
+800	82
+900	58
+1000	50
+1100	34
+1200	34
+1300	24
+1400	19
+1500	22
+1600	13
+1700	12
+1800	13
+1900	7
+2000	4
+2100	5
+2200	7
+2300	3
+2400	2
+2500	2
+2600	1
+2700	3
+2800	1
+2900	1
+3100	1
+3600	1
+3800	1
+4000	1
+running_length 2412141.0
+total_length 2196627
+number of contigs 11973
+maximum contig length 4059
+mean contig length 183.46504635429716
+N50 300
+minimum contig length 61
+mean depth of coverage 59.46578158862377

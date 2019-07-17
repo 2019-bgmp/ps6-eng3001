@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH --partition=bgmp        ### Partition (like a queue in PBS)
+#SBATCH --job-name=WE_velveth   ### Job Name
+#SBATCH --output=slurm-%j-%x.out   ### File in which to store job output
+#SBATCH --error=3_g.err         ### File in which to store job error messages
+#SBATCH --time=0-00:60:00       ### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1               ### Number of nodes needed for the job
+#SBATCH --ntasks-per-node=1     ### Number of tasks to be launched per Node
+#SBATCH --account=bgmp          ### Account used for job submission
+
+/usr/bin/time -v velvetg /projects/bgmp/wyatte/ps6_dir/vel3_49_out/ -exp_cov 36.96455550000001 -ins_length 76.79104993766992

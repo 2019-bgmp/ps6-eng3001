@@ -1,0 +1,12 @@
+# Contig length		Number of contigs in this category
+800	1
+1200	1
+running_length 2072.0
+total_length 2072
+number of contigs 2
+maximum contig length 1202
+mean contig length 1036.0
+N50 1202
+minimum contig length 1202
+mean depth of coverage 322.74826890089696
+N50_array [1202, 870]

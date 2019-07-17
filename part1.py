@@ -5,7 +5,7 @@ import re
 
 #Set input variables
 def get_args():
-    parser = argparse.ArgumentParser(description="")
+    parser = argparse.ArgumentParser(description="Contig length distributions")
     parser.add_argument("-f", "--file", help="File name", type=str)
     return parser.parse_args()
 
@@ -27,11 +27,14 @@ record_len = 0 #variable used to store each record
 mean_contig = 0 #mean contig value
 Minimum_contig = 1000000 #Minimum contig to check distribution
 
+#print("Hi")
+
 with open(FILE, "r") as fh:
     LN = 0 #Line number
     for line in fh:
         LN+=1
         line = line.strip('\n') #Manipulate the sequence line
+#        print (line)
         if line.startswith(">"):
             x = re.search("^>[A-Za-z]+_[0-9]+_[A-Za-z]+_([0-9]+)_[A-Za-z]+_(.+)", line)
             kcount = float(x.group(1))
@@ -56,6 +59,11 @@ with open(FILE, "r") as fh:
             if record_len > max_contig_len:
                 max_contig_len = record_len
 
+N50_array.append(record_len) #append the last record into the array
+
+#print (record_len)
+#print(N50_array)
+
 #N50 Calculation
 N50_array.sort(reverse = True)
 N50_val = 0 # The N50 value
@@ -64,9 +72,11 @@ index = 0 #keeps track of the N50_array's index
 N50_sorting_val = total_length // 2 #The value to compare the length_sum to
 boolN50 = False
 while boolN50 == False:
+#    print(length_sum)
     length_sum += N50_array[index]
-    if length_sum > N50_sorting_val:
+    if length_sum > N50_sorting_val: ###### Turned > to >= for Unit test
         N50_val = N50_array[index]
+        index_valll = index
         boolN50 = True
     index+=1
 
@@ -100,3 +110,20 @@ print ("mean contig length",mean_contig)
 print ("N50", N50_val)
 print("minimum contig length", Minimum_contig)
 print ("mean depth of coverage", mean_depth)
+#print("N50_array", N50_array)
+#print(N50_sorting_val)
+#print(index_valll)
+#print(contig_dict.keys())
+#print(contig_dict.values())
+
+
+import matplotlib.pyplot as plt
+plt.figure(figsize=(10,10))
+plt.plot(contig_dict.keys(),contig_dict.values())
+plt.xlabel('Contig Length')
+plt.ylabel('Number of Contigs in this category')
+plt.title('Distribution of Contig Length')
+plt.savefig("pt1PLOT.png")
+#plt.yscale('log')
+#plt.xlim(0,10000)
+plt.show()
